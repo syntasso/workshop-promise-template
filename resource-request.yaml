@@ -1,0 +1,6 @@
+apiVersion: example.promise.syntasso.io/v1
+kind: # kind
+metadata:
+  name: example
+  namespace: default
+spec:
