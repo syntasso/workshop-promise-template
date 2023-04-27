@@ -1,7 +1,7 @@
 apiVersion: platform.kratix.io/v1alpha1
 kind: Promise
 metadata:
-  name: # name
+  name: jenkins
   namespace: default
 spec:
   #workerClusterResources:
