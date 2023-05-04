@@ -1,22 +1,23 @@
 #!/usr/bin/env bash
 
 set -e
-PWD="$( cd $(dirname $0)/.. && pwd)"
+root="$( cd $(dirname $0)/.. && pwd)"
 
+promise_name="$(basename "$(dirname "${root}")")"
 
-promise_name="$(basename "$(dirname "${PWD}")")"
+wcrbin=${root}/scripts/worker-resource-builder
 
-if ! which worker-resource-builder >/dev/null; then
-	echo "worker-resource-builder not installed"
-	exit 1
+if [ ! -f $wcrbin ]; then
+  echo "please download the worker-resource-builder binary and place it in the scripts directory"
+  exit 1
 fi
 
-if [ ! -d "${PWD}/resources" ]; then
+if [ ! -d "${root}/resources" ]; then
   exit 0
 fi
 
-promise_contents=$(worker-resource-builder \
-  -k8s-resources-directory "${PWD}/resources" \
-	-promise "${PWD}/../promise.yaml")
+promise_contents=$(${wcrbin} \
+  -k8s-resources-directory "${root}/resources" \
+  -promise "${root}/../promise.yaml")
 
-echo "$promise_contents" > "${PWD}/../promise.yaml"
+echo "$promise_contents" > "${root}/../promise.yaml"
