@@ -5,11 +5,14 @@ root="$( cd $(dirname $0)/.. && pwd)"
 
 promise_name="$(basename "$(dirname "${root}")")"
 
-wcrbin=${root}/scripts/worker-resource-builder
 
-if [ ! -f $wcrbin ]; then
-  echo "please download the worker-resource-builder binary and place it in the scripts directory"
-  exit 1
+wcrbin=worker-resource-builder
+if ! type -p $wcrbin > /dev/null; then
+  wcrbin=${root}/scripts/worker-resource-builder
+  if [ ! -f $wcrbin ]; then
+    echo "please download the worker-resource-builder binary and place it in the scripts directory"
+    exit 1
+  fi
 fi
 
 if [ ! -d "${root}/resources" ]; then
