@@ -4,6 +4,6 @@ metadata:
   name: jenkins
   namespace: default
 spec:
-  #workerClusterResources:
-  #xaasCrd:
-  #xaasRequestPipeline:
+  #dependencies:
+  #api:
+  #workflows:
