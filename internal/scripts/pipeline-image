@@ -17,7 +17,7 @@ while [ $# -gt 0 ]; do
       docker build \
         --tag "${PIPELINE_NAME}" \
         --platform linux/amd64 \
-        "${PWD}/request-pipeline" ;;
+        "${PWD}/configure-pipeline" ;;
 
     load)
       kind load docker-image "${PIPELINE_NAME}" --name platform ;;

@@ -15,12 +15,12 @@ if ! type -p $wcrbin > /dev/null; then
   fi
 fi
 
-if [ ! -d "${root}/resources" ]; then
+if [ ! -d "${root}/dependencies" ]; then
   exit 0
 fi
 
 promise_contents=$(${wcrbin} \
-  -k8s-resources-directory "${root}/resources" \
+  -resources-dir "${root}/dependencies" \
   -promise "${root}/../promise.yaml")
 
 echo "$promise_contents" > "${root}/../promise.yaml"
